@@ -2,11 +2,18 @@
 
 
 #include "AuraCharacterBased/AuraEnemy.h"
+#include "AbilitySystemBase/AuraAbilitySystemComponent.h"
+#include "AbilitySystemBase/AuraAttributeSet.h"
 #include "rpg_topdown/rpg_topdown.h"
 
 AAuraEnemy::AAuraEnemy()
 {
 	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+
+	AbilitySystemComponent = CreateDefaultSubobject<UAuraAbilitySystemComponent>("AbilitySystemComponent");
+	AbilitySystemComponent->SetIsReplicated(true);
+
+	AttributeSet = CreateDefaultSubobject<UAuraAttributeSet>("AttributeSet");
 }
 
 
